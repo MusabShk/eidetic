@@ -3,7 +3,7 @@ import AddForm from "../../components/form/AddForm";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-const index = () => {
+const NewEidetic = () => {
   const router = useRouter();
 
   const addNew = async (eideticData) => {
@@ -33,4 +33,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default NewEidetic;
