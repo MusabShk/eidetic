@@ -26,7 +26,6 @@ const AddForm = (props) => {
       image: enteredImage,
       description: enteredMemory,
     };
-    // console.log(eideticData);
     props.newEidetic(eideticData);
   };
 

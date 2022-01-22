@@ -20,7 +20,7 @@ const PhotoCard = (props) => {
             component="img"
             height="140"
             image={props.carddata.image}
-            alt="green iguana"
+            alt="no image"
           />
           <CardContent>
             <Typography

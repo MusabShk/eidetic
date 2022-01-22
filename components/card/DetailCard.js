@@ -22,7 +22,6 @@ const DetailCard = (props) => {
                 height="100%"
                 width="100%"
                 image={props.image}
-                alt="Paella dish"
               />
             </Card>
           </Grid>

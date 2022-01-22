@@ -10,7 +10,6 @@ const handler = async (req, res) => {
     const db = client.db();
     const eideticCollections = db.collection("eidetic");
     const result = await eideticCollections.insertOne(data);
-    console.log(result);
     client.close();
     res.status(201).json({ message: "eidetic inserted !" });
   }
