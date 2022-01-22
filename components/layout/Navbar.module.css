@@ -1,0 +1,17 @@
+.nav {
+  background-color: black;
+}
+
+.nav_grid_item {
+  flex-grow: 1;
+}
+
+.nav_heading {
+  font-weight: 700;
+  font-family: Satisfy;
+}
+.nav_icons {
+  color: #1248d0;
+  font-size: 25px;
+  margin-top: 10px;
+}

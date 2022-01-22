@@ -1,0 +1,14 @@
+.card_title {
+  font-family: Quicksand;
+  font-weight: 600;
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+.card_description {
+  font-family: Quicksand;
+  font-weight: 300;
+  font-size: 15px;
+}
+.container {
+  padding-bottom: 20px;
+}
