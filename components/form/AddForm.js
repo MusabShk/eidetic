@@ -18,15 +18,30 @@ const AddForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const enteredTitle = titleRef.current.value;
-    const enteredImage = imageLinkRef.current.value;
-    const enteredMemory = descriptionRef.current.value;
-    const eideticData = {
-      title: enteredTitle,
-      image: enteredImage,
-      description: enteredMemory,
-    };
-    props.newEidetic(eideticData);
+    let result =
+      imageLinkRef.current.value.endsWith(".jpg") ||
+      imageLinkRef.current.value.endsWith(".gif") ||
+      imageLinkRef.current.value.endsWith(".png");
+    if (result) {
+      const enteredTitle = titleRef.current.value;
+      const enteredImage = imageLinkRef.current.value;
+      const enteredMemory = descriptionRef.current.value;
+      const eideticData = {
+        title: enteredTitle,
+        image: enteredImage,
+        description: enteredMemory,
+      };
+      props.newEidetic(eideticData);
+    } else {
+      imageLinkRef.current.focus();
+    }
+
+    // const checkImage = async (url) => {
+    //   const res = await fetch(url);
+    //   const buff = await res.blob();
+
+    //   return buff.type.startsWith("image/");
+    // };
   };
 
   return (
@@ -56,6 +71,7 @@ const AddForm = (props) => {
                 inputRef={imageLinkRef}
                 fullWidth
                 required
+                helperText="Supported image formats (.jpg  .png  .gif)"
               />
               <TextField
                 label="Your Memories..."

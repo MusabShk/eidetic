@@ -13,10 +13,10 @@ const DetailCard = (props) => {
     <>
       <Toolbar />
       <Toolbar />
-      <Container>
+      <Container maxWidth="lg">
         <Grid container justifyContent="center" className={classes.container}>
-          <Grid item>
-            <Card sx={{ maxWidth: 600 }} elevation={5}>
+          <Grid item xs={12} sm={6}>
+            <Card elevation={5}>
               <CardMedia
                 component="img"
                 height="100%"
@@ -25,8 +25,10 @@ const DetailCard = (props) => {
               />
             </Card>
           </Grid>
-          <Grid item>
-            <Card sx={{ maxWidth: 600, marginTop: 5 }} elevation={1}>
+        </Grid>
+        <Grid container justifyContent="center" className={classes.container}>
+          <Grid item xs={12} sm={6}>
+            <Card sx={{ marginTop: 5 }} elevation={1}>
               <CardContent>
                 <Typography className={classes.card_title}>
                   {props.title}
