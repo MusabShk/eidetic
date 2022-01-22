@@ -19,24 +19,23 @@ const eideticDetails = (props) => {
   );
 };
 
-export const getStaticPaths = async () => {
-  const client = await MongoClient.connect(
-    `mongodb+srv://musabsk:musab123sk@cluster0.hefe7.mongodb.net/eidetic?retryWrites=true&w=majority`
-  );
-  const db = client.db();
-  const eideticsCollections = db.collection("eidetic");
-  const eidetics = await eideticsCollections.find({}, { _id: 1 }).toArray();
-  client.close();
+// export const getStaticPaths = async () => {
+//   const client = await MongoClient.connect(
+//     `mongodb+srv://musabsk:musab123sk@cluster0.hefe7.mongodb.net/eidetic?retryWrites=true&w=majority`
+//   );
+//   const db = client.db();
+//   const eideticsCollections = db.collection("eidetic");
+//   const eidetics = await eideticsCollections.find({}, { _id: 1 }).toArray();
+//   client.close();
 
-  return {
-    fallback: "blocking", //false==we have given all meetupid value
-    paths: eidetics.map((eidetic) => ({
-      params: { eideticId: eidetic._id.toString() },
-    })),
-  };
-};
-
-export const getStaticProps = async (context) => {
+//   return {
+//     fallback: false, //false==we have given all meetupid value
+//     paths: eidetics.map((eidetic) => ({
+//       params: { eideticId: eidetic._id.toString() },
+//     })),
+//   };
+// };
+export const getServerSideProps = async (context) => {
   const eideticId = context.params.eideticId;
   const client = await MongoClient.connect(
     `mongodb+srv://musabsk:musab123sk@cluster0.hefe7.mongodb.net/eidetic?retryWrites=true&w=majority`
@@ -47,7 +46,6 @@ export const getStaticProps = async (context) => {
     _id: ObjectId(eideticId),
   });
   client.close();
-
   return {
     props: {
       eideticData: {

@@ -8,14 +8,17 @@ const HomePage = (props) => {
     <>
       <Head>
         <title>Eidetic</title>
-        <meta name="description" content="A place where you share your memories and express feelings." />
+        <meta
+          name="description"
+          content="A place where you share your memories and express feelings."
+        />
       </Head>
       <Mainhome carddata={props.eidetics} />
     </>
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const client = await MongoClient.connect(
     `mongodb+srv://musabsk:musab123sk@cluster0.hefe7.mongodb.net/eidetic?retryWrites=true&w=majority`
   );
@@ -32,7 +35,6 @@ export const getStaticProps = async () => {
         image: eidetic.image,
       })),
     },
-    revalidate: 1,
   };
 };
 

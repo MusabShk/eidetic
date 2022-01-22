@@ -12,9 +12,13 @@ import { useRouter } from "next/router";
 const PhotoCard = (props) => {
   const router = useRouter();
 
+  const clickHandler = () => {
+    router.push(`/${props.carddata.id}`);
+  };
+
   return (
     <>
-      <Card onClick={() => router.push(`/${props.carddata.id}`)}>
+      <Card onClick={clickHandler}>
         <CardActionArea>
           <CardMedia
             component="img"
