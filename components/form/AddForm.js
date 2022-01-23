@@ -16,27 +16,17 @@ const AddForm = (props) => {
   const imageLinkRef = useRef();
   const descriptionRef = useRef();
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    function checkImage(url) {
-      var request = new XMLHttpRequest();
-      request.open("GET", url, true);
-      // request.send();
-      request.onload = function () {
-        if (request.status == 200) {
-          // console.log("image exists");
-          return true;
-        } else {
-          // console.log("image doesn't exist");
-          return false;
-        }
-      };
+    async function checkImage(url) {
+      const res = await fetch(url);
+      return res.ok;
     }
     let result =
       (imageLinkRef.current.value.endsWith(".jpg") ||
         imageLinkRef.current.value.endsWith(".gif") ||
         imageLinkRef.current.value.endsWith(".png")) &&
-      checkImage(imageLinkRef.current.value);
+      (await checkImage(imageLinkRef.current.value));
     if (result) {
       const enteredTitle = titleRef.current.value;
       const enteredImage = imageLinkRef.current.value;
